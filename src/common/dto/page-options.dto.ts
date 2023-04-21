@@ -25,6 +25,11 @@ export class PageOptionsDto {
   @Type(() => String)
   readonly search?: string;
 
+  @IsString()
+  @IsOptional()
+  @Type(() => String)
+  readonly type?: string;
+
   get skip(): number {
     if (this.page && this.limit) {
       return (this.page - 1) * this.limit;

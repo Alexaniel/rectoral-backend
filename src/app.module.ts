@@ -6,6 +6,7 @@ import { WelcomePhrasesModule } from './modules/welcome-phrases/welcome-phrases.
 import { MongooseModule } from '@nestjs/mongoose';
 import { RECTORAL_MONGO_URI } from './config/environments';
 import { SupportersModule } from './modules/supporters/supporters.module';
+import { OutsideholdingsModule } from './modules/outsideholdings/outsideholdings.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { SupportersModule } from './modules/supporters/supporters.module';
     MongooseModule.forRoot(RECTORAL_MONGO_URI),
     WelcomePhrasesModule,
     SupportersModule,
+    OutsideholdingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -30,6 +30,16 @@ export class PageOptionsDto {
   @Type(() => String)
   readonly type?: string;
 
+  @IsString()
+  @IsOptional()
+  @Type(() => String)
+  readonly modality?: string;
+
+  @IsString()
+  @IsOptional()
+  @Type(() => String)
+  readonly country?: string;
+
   get skip(): number {
     if (this.page && this.limit) {
       return (this.page - 1) * this.limit;

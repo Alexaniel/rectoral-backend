@@ -7,7 +7,7 @@ export class Image {
   @Prop({ type: Object })
   image: {
     original: string;
-    thumbnail: boolean;
+    thumbnail: string;
   };
 }
 

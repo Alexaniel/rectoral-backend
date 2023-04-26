@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { RECTORAL_MONGO_URI } from './config/environments';
 import { SupportersModule } from './modules/supporters/supporters.module';
 import { OutsideholdingsModule } from './modules/outsideholdings/outsideholdings.module';
+import { WebinarsModule } from './modules/webinars/webinars.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { OutsideholdingsModule } from './modules/outsideholdings/outsideholdings
     WelcomePhrasesModule,
     SupportersModule,
     OutsideholdingsModule,
+    WebinarsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

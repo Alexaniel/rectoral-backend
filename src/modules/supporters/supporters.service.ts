@@ -20,21 +20,48 @@ export class SupportersService {
   ) {}
 
   async getSupporters(pageOptionsDto: PageOptionsDto) {
-    const query: any = {};
+    const query: any = {
+      isAvailable: true,
+    };
+
+    const match = {
+      $match: query,
+    };
+
+    const group = {
+      $group: {
+        _id: '$type',
+        count: { $sum: 1 },
+        documents: { $push: '$$ROOT' },
+      },
+    };
+
+    const project = {
+      $project: {
+        _id: 0,
+        k: '$_id',
+        v: { count: '$count', documents: '$documents' },
+      },
+    };
+
+    const replace = {
+      $replaceRoot: {
+        newRoot: { $arrayToObject: [[{ k: '$k', v: '$v' }]] },
+      },
+    };
 
     const supporters = await this.supporterModel.aggregate([
-      {
-        $group: {
-          _id: '$type',
-          count: { $sum: 1 },
-          documents: { $push: '$$ROOT' },
-        },
-      },
+      match,
+      group,
+      project,
+      replace,
+      { $group: { _id: null, data: { $mergeObjects: '$$ROOT' } } },
+      { $replaceRoot: { newRoot: '$data' } },
     ]);
 
     const itemCount = await this.supporterModel.countDocuments(query).exec();
     const pageMetaDto = new PageMetaEntity({ itemCount, pageOptionsDto });
 
-    return new PageEntity(supporters, pageMetaDto);
+    return new PageEntity(supporters[0], pageMetaDto);
   }
 }

@@ -8,10 +8,19 @@ export class WebinarsController {
 
   @Get()
   async getWebinars(@Query() query: PageOptionsDto) {
-    const phrases = await this.webinarsService.getWebinars(query);
+    const webinars = await this.webinarsService.getWebinars(query);
     return {
       message: 'Webinars',
-      ...phrases,
+      ...webinars,
+    };
+  }
+
+  @Get('/calendar')
+  async getCalendarWebinars() {
+    const webinars = await this.webinarsService.getCalendarWebinars();
+    return {
+      message: 'Webinars',
+      data: webinars,
     };
   }
 }

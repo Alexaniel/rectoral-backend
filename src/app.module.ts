@@ -8,6 +8,7 @@ import { RECTORAL_MONGO_URI } from './config/environments';
 import { SupportersModule } from './modules/supporters/supporters.module';
 import { OutsideholdingsModule } from './modules/outsideholdings/outsideholdings.module';
 import { WebinarsModule } from './modules/webinars/webinars.module';
+import { MetricsModule } from './modules/metrics/metrics.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { WebinarsModule } from './modules/webinars/webinars.module';
     SupportersModule,
     OutsideholdingsModule,
     WebinarsModule,
+    MetricsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

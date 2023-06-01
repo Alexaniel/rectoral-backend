@@ -23,7 +23,10 @@ export class WelcomePhrasesService {
 
   async getWelcomePhrases(pageOptionsDto: PageOptionsDto) {
     const { limit, skip, search } = pageOptionsDto;
-    const query: any = {};
+    const query: any = {
+      'slogan.content': { $ne: '' },
+      'slogan.isRequired': true,
+    };
 
     if (search) {
       query.$or = [

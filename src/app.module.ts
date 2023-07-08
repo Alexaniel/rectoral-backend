@@ -9,6 +9,7 @@ import { SupportersModule } from './modules/supporters/supporters.module';
 import { OutsideholdingsModule } from './modules/outsideholdings/outsideholdings.module';
 import { WebinarsModule } from './modules/webinars/webinars.module';
 import { MetricsModule } from './modules/metrics/metrics.module';
+import { NewsModule } from './modules/news/news.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { MetricsModule } from './modules/metrics/metrics.module';
     OutsideholdingsModule,
     WebinarsModule,
     MetricsModule,
+    NewsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
